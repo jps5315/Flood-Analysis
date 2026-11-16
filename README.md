@@ -10,12 +10,6 @@ Esri partners) automate. The overlay tools are ordinary. The product
 survives because of **CRS, schema, scratch vs production, run history, and
 fail-fast validation**.
 
-## Who does what (mentoring contract)
-
-You own the decisions in [`docs/decisions.md`](docs/decisions.md). Thresholds
-and overlay rules are config, not tribal knowledge. I (the coding pass) built
-the plumbing so you can change a business rule without renaming service fields.
-
 ## What the tool does
 
 1. Validate AOI, flood, parcels (and optional buildings): polygon, counts, ID fields.
