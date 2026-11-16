@@ -1,6 +1,6 @@
 # Houston Flood Impact Ops
 
-Client-style **ArcPy** geoprocessing application for Harris County flood impact:
+**ArcPy** geoprocessing application for Harris County flood impact:
 Clip a watershed (or incident polygon) to a flood scenario, overlay parcels and
 optional buildings, write a **schema-stable** geodatabase, and emit CSV/HTML
 exhibits that can be published as an ArcGIS Enterprise GP service.
