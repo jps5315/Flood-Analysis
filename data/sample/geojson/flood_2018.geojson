@@ -1,0 +1,111 @@
+{
+  "type": "FeatureCollection",
+  "name": "flood_2018",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "AE",
+        "SFHA_TF": "T",
+        "scenario": "FEMA_2018"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.48,
+              29.69
+            ],
+            [
+              -95.4,
+              29.69
+            ],
+            [
+              -95.4,
+              29.715
+            ],
+            [
+              -95.48,
+              29.715
+            ],
+            [
+              -95.48,
+              29.69
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "AE",
+        "SFHA_TF": "T",
+        "scenario": "FEMA_2018"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.47999999999999,
+              29.698
+            ],
+            [
+              -95.42999999999999,
+              29.698
+            ],
+            [
+              -95.42999999999999,
+              29.718
+            ],
+            [
+              -95.47999999999999,
+              29.718
+            ],
+            [
+              -95.47999999999999,
+              29.698
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "X",
+        "SFHA_TF": "F",
+        "scenario": "FEMA_2018"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.41,
+              29.73
+            ],
+            [
+              -95.38,
+              29.73
+            ],
+            [
+              -95.38,
+              29.745
+            ],
+            [
+              -95.41,
+              29.745
+            ],
+            [
+              -95.41,
+              29.73
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

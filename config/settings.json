@@ -1,0 +1,60 @@
+{
+  "project_name": "Houston Flood Impact Ops",
+  "client_crs": {
+    "wkid": 3083,
+    "name": "NAD_1983_Texas_Albers_Equal_Area",
+    "linear_unit": "meter",
+    "why": "Equal-area projection preserves area for accurate flood impact calculations. Conformal projections (StatePlane) distort area, which is unacceptable for overlap area and cross-sectional volume measurements. Texas Albers provides area accuracy across the entire state."
+  },
+  "impact_rule": {
+    "overlay_method": "vector_raster_hybrid",
+    "definition": "cumulative_compound_3d",
+    "min_single_year_overlap_pct": 5.0,
+    "min_cumulative_overlap_pct": 10.0,
+    "min_cumulative_overlap_area_sf": 300.0,
+    "min_single_year_cross_sectional_area_sf": 200.0,
+    "min_cumulative_cross_sectional_area_sf": 500.0,
+    "use_buildings_if_present": false,
+    "building_overlap_counts_as_impact": false,
+    "historical_years": [2016, 2017, 2018],
+    "notes": "A parcel is impacted if (cumulative_cross_sectional_area_sf >= min_cumulative_cross_sectional_area_sf) OR (max_single_year_cross_sectional_area_sf >= min_single_year_cross_sectional_area_sf) OR (cumulative_overlap_pct >= min_cumulative_overlap_pct) OR (max_single_year_overlap_pct >= min_single_year_overlap_pct). Cross-sectional area (3D volume) = depth × area. Cumulative sums across 3 historical years (2016, 2017, 2018). Buildings are not considered — analysis focuses on land flood frequency for both developed and vacant parcels."
+  },
+  "fields": {
+    "parcel_id_candidates": ["parcel_id", "PARCEL_ID", "HCAD_NUM", "ACCOUNT", "ACCT", "PIN", "Prop_ID"],
+    "flood_zone_candidates": ["flood_zone", "FLD_ZONE", "ZONE", "SFHA_TF", "FLD_ZONE_1"],
+    "aoi_name_candidates": ["aoi_name", "NAME", "WS_NAME", "WATERSHED", "Watershed"],
+    "building_id_candidates": ["building_id", "BUILDING_ID", "OBJECTID", "BldgID"]
+  },
+  "outputs": {
+    "history_parcels": "ImpactedParcels_History",
+    "latest_parcels": "ImpactedParcels_Latest",
+    "history_summary": "ImpactSummary_History",
+    "latest_summary": "ImpactSummary_Latest",
+    "runs_table": "FloodImpact_Runs"
+  },
+  "qc": {
+    "max_aoi_features": 50,
+    "max_flood_features": 200000,
+    "max_parcel_features": 250000,
+    "max_building_features": 250000,
+    "fail_on_empty_aoi": true,
+    "fail_on_empty_flood": true,
+    "fail_on_empty_parcels": true,
+    "fail_on_empty_impact": false,
+    "warn_on_empty_impact": true,
+    "repair_geometry": true,
+    "delete_null_geometry": true,
+    "pagination_threshold": 2000,
+    "use_pagination": true,
+    "pagination_record_count": 2000,
+    "rest_timeout_seconds": 60
+  },
+  "workspace": {
+    "scratch_name": "flood_ops_scratch.gdb",
+    "production_gdb_name": "flood_ops_production.gdb"
+  },
+  "reporting": {
+    "top_n_parcels": 25,
+    "map_series_enabled": true
+  }
+}

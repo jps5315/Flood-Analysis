@@ -1,0 +1,86 @@
+{
+  "version": "3.0.0",
+  "title": "Houston Flood Impact output contract",
+  "change_policy": "Field names, types, and aliases are a release. Do not rename in place. Bump version and migrate.",
+  "spatial_reference_wkid": 3083,
+  "geometry_type": "POLYGON",
+  "feature_classes": {
+    "ImpactedParcels": {
+      "geometry_type": "POLYGON",
+      "fields": [
+        {"name": "run_id", "type": "TEXT", "length": 64, "alias": "Run ID", "required": true},
+        {"name": "run_time_utc", "type": "DATE", "alias": "Run Time UTC", "required": true},
+        {"name": "scenario_name", "type": "TEXT", "length": 128, "alias": "Scenario Name", "required": true},
+        {"name": "aoi_name", "type": "TEXT", "length": 128, "alias": "AOI Name", "required": true},
+        {"name": "parcel_id", "type": "TEXT", "length": 64, "alias": "Parcel ID", "required": true},
+        {"name": "flood_zone", "type": "TEXT", "length": 32, "alias": "Flood Zone", "required": false},
+        {"name": "parcel_area_sf", "type": "DOUBLE", "alias": "Parcel Area Sq Ft", "required": true},
+        {"name": "overlap_area_sf", "type": "DOUBLE", "alias": "Overlap Area Sq Ft (single year, max, 2D)", "required": true},
+        {"name": "overlap_pct", "type": "DOUBLE", "alias": "Overlap Percent (single year, max, 2D)", "required": true},
+        {"name": "cumulative_overlap_area_sf", "type": "DOUBLE", "alias": "Cumulative Overlap Area Sq Ft (3-year sum, 2D)", "required": true},
+        {"name": "cumulative_overlap_pct", "type": "DOUBLE", "alias": "Cumulative Overlap Percent (3-year sum, 2D)", "required": true},
+        {"name": "max_single_year_overlap_pct", "type": "DOUBLE", "alias": "Max Single Year Overlap Percent (2D)", "required": true},
+        {"name": "cross_sectional_area_sf", "type": "DOUBLE", "alias": "Cross-Sectional Area Sq Ft (single year, max, 3D volume)", "required": true},
+        {"name": "cumulative_cross_sectional_area_sf", "type": "DOUBLE", "alias": "Cumulative Cross-Sectional Area Sq Ft (3-year sum, 3D volume)", "required": true},
+        {"name": "max_single_year_cross_sectional_area_sf", "type": "DOUBLE", "alias": "Max Single Year Cross-Sectional Area Sq Ft (3D volume)", "required": true},
+        {"name": "years_with_flood_count", "type": "SHORT", "alias": "Years With Flood Count (of 3)", "required": true},
+        {"name": "impact_flag", "type": "SHORT", "alias": "Impact Flag", "required": true},
+        {"name": "impact_rule", "type": "TEXT", "length": 64, "alias": "Impact Rule", "required": true},
+        {"name": "building_count", "type": "LONG", "alias": "Flooded Building Count (deprecated, always 0)", "required": true},
+        {"name": "qc_notes", "type": "TEXT", "length": 255, "alias": "QC Notes", "required": false}
+      ]
+    },
+    "ImpactSummary": {
+      "geometry_type": "TABLE",
+      "fields": [
+        {"name": "run_id", "type": "TEXT", "length": 64, "alias": "Run ID", "required": true},
+        {"name": "run_time_utc", "type": "DATE", "alias": "Run Time UTC", "required": true},
+        {"name": "scenario_name", "type": "TEXT", "length": 128, "alias": "Scenario Name", "required": true},
+        {"name": "aoi_name", "type": "TEXT", "length": 128, "alias": "AOI Name", "required": true},
+        {"name": "parcel_count", "type": "LONG", "alias": "Parcels In AOI", "required": true},
+        {"name": "impacted_count", "type": "LONG", "alias": "Impacted Parcels", "required": true},
+        {"name": "impacted_pct", "type": "DOUBLE", "alias": "Impacted Percent", "required": true},
+        {"name": "impacted_area_sf", "type": "DOUBLE", "alias": "Impacted Overlap Sq Ft (cumulative, 2D)", "required": true},
+        {"name": "impacted_cross_sectional_area_sf", "type": "DOUBLE", "alias": "Impacted Cross-Sectional Area Sq Ft (cumulative, 3D volume)", "required": true},
+        {"name": "building_count", "type": "LONG", "alias": "Flooded Buildings (deprecated, always 0)", "required": true},
+        {"name": "max_overlap_pct", "type": "DOUBLE", "alias": "Max Single Year Overlap Percent (2D)", "required": true},
+        {"name": "max_cumulative_overlap_pct", "type": "DOUBLE", "alias": "Max Cumulative Overlap Percent (2D)", "required": true},
+        {"name": "max_cross_sectional_area_sf", "type": "DOUBLE", "alias": "Max Cross-Sectional Area Sq Ft (3D volume)", "required": true},
+        {"name": "impact_rule", "type": "TEXT", "length": 64, "alias": "Impact Rule", "required": true}
+      ]
+    },
+    "FloodImpact_Runs": {
+      "geometry_type": "TABLE",
+      "fields": [
+        {"name": "run_id", "type": "TEXT", "length": 64, "alias": "Run ID", "required": true},
+        {"name": "version_id", "type": "TEXT", "length": 64, "alias": "Version ID", "required": true},
+        {"name": "run_time_utc", "type": "DATE", "alias": "Run Time UTC", "required": true},
+        {"name": "completion_time_utc", "type": "DATE", "alias": "Completion Time UTC", "required": false},
+        {"name": "status", "type": "TEXT", "length": 32, "alias": "Status", "required": true},
+        {"name": "scenario_name", "type": "TEXT", "length": 128, "alias": "Scenario Name", "required": true},
+        {"name": "aoi_name", "type": "TEXT", "length": 128, "alias": "AOI Name", "required": true},
+        {"name": "input_metadata", "type": "TEXT", "length": 2000, "alias": "Input Metadata (JSON)", "required": true},
+        {"name": "result_summary", "type": "TEXT", "length": 2000, "alias": "Result Summary (JSON)", "required": false},
+        {"name": "failure_summary", "type": "TEXT", "length": 2000, "alias": "Failure Summary (JSON)", "required": false}
+      ]
+    },
+    "StepLog": {
+      "geometry_type": "TABLE",
+      "fields": [
+        {"name": "run_id", "type": "TEXT", "length": 64, "alias": "Run ID", "required": true},
+        {"name": "step_id", "type": "TEXT", "length": 64, "alias": "Step ID", "required": true},
+        {"name": "step_name", "type": "TEXT", "length": 128, "alias": "Step Name", "required": true},
+        {"name": "start_time_utc", "type": "DATE", "alias": "Start Time UTC", "required": true},
+        {"name": "end_time_utc", "type": "DATE", "alias": "End Time UTC", "required": false},
+        {"name": "elapsed_seconds", "type": "DOUBLE", "alias": "Elapsed Seconds", "required": false},
+        {"name": "crs_wkid", "type": "LONG", "alias": "CRS WKID", "required": true},
+        {"name": "input_metadata", "type": "TEXT", "length": 2000, "alias": "Input Metadata (JSON)", "required": false},
+        {"name": "feature_counts", "type": "TEXT", "length": 1000, "alias": "Feature Counts (JSON)", "required": false},
+        {"name": "parameters", "type": "TEXT", "length": 1000, "alias": "Parameters (JSON)", "required": false},
+        {"name": "warnings", "type": "TEXT", "length": 1000, "alias": "Warnings (JSON)", "required": false},
+        {"name": "status", "type": "TEXT", "length": 32, "alias": "Status", "required": true},
+        {"name": "error_message", "type": "TEXT", "length": 1000, "alias": "Error Message", "required": false}
+      ]
+    }
+  }
+}

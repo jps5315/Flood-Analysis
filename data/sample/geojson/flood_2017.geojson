@@ -1,0 +1,111 @@
+{
+  "type": "FeatureCollection",
+  "name": "flood_2017",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "AE",
+        "SFHA_TF": "T",
+        "scenario": "FEMA_2017"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.49,
+              29.69
+            ],
+            [
+              -95.41,
+              29.69
+            ],
+            [
+              -95.41,
+              29.715
+            ],
+            [
+              -95.49,
+              29.715
+            ],
+            [
+              -95.49,
+              29.69
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "AE",
+        "SFHA_TF": "T",
+        "scenario": "FEMA_2017"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.47,
+              29.698
+            ],
+            [
+              -95.42,
+              29.698
+            ],
+            [
+              -95.42,
+              29.718
+            ],
+            [
+              -95.47,
+              29.718
+            ],
+            [
+              -95.47,
+              29.698
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "flood_zone": "X",
+        "SFHA_TF": "F",
+        "scenario": "FEMA_2017"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.41,
+              29.720000000000002
+            ],
+            [
+              -95.38,
+              29.720000000000002
+            ],
+            [
+              -95.38,
+              29.735000000000003
+            ],
+            [
+              -95.41,
+              29.735000000000003
+            ],
+            [
+              -95.41,
+              29.720000000000002
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

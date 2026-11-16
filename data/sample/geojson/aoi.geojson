@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "name": "aoi",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "aoi_name": "Brays Bayou (sample)",
+        "WATERSHED": "Brays Bayou"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.52,
+              29.68
+            ],
+            [
+              -95.36,
+              29.68
+            ],
+            [
+              -95.36,
+              29.74
+            ],
+            [
+              -95.52,
+              29.74
+            ],
+            [
+              -95.52,
+              29.68
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
